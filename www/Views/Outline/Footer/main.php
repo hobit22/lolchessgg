@@ -1,0 +1,1 @@
+<h1>푸터 - Outline/Footer/main.php </h1>
