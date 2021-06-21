@@ -26,7 +26,7 @@ class FindId
 	public function data($params = [])
 	{
 		$this->params = $params;
-		debug($this);
+		//debug($this);
 		return $this;
 	}
 	
@@ -38,21 +38,26 @@ class FindId
 	*/
 	public function get($userId)
 	{
-		$userInfo = $this->getInfo($userId);
+		$userInfo = $this->byId($userId);
+		$data = $userInfo;
 		$puuid = $userInfo['puuid'];
 		$match = $this->getMatch($puuid);
-		
-		return;
+		$data ['matchData']= $match;
+		return $data;
+	
 	}
 	/** 
-		유저 정보 조회
+		유저 정보 아이디로 조회
 		
 		@param String 유저아이디
 		@return Array
 	*/
-	public function getInfo($userId){
+	public function byId($userId){
+		$config = getConfig();
+		$api_key = "{$config['api_key']}";
+		
 		$summoner_name = urlencode($userId);
-        $api_key = "RGAPI-fe885ae4-999f-4019-9af8-f35a775bb8a6";
+        
         $url = "https://kr.api.riotgames.com/lol/summoner/v4/summoners/by-name/".$summoner_name."?api_key=".$api_key;
         $is_post = false;
         $ch = curl_init();
@@ -74,14 +79,50 @@ class FindId
 		
 	}
 	/** 
-		매치 정보 조회
+		유저 정보 puuid로 조회
+		
+		@param String puuid
+		@return Array
+	*/
+	public function byPuuid($userId){
+		$config = getConfig();
+		$api_key = "{$config['api_key']}";
+		
+		$puuId = urlencode($userId);
+        
+        $url ="https://kr.api.riotgames.com/tft/summoner/v1/summoners/by-puuid/".$puuId."?api_key=".$api_key;
+        $is_post = false;
+        $ch = curl_init();
+		
+        curl_setopt($ch, CURLOPT_URL, $url);
+        curl_setopt($ch, CURLOPT_POST, $is_post);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+		
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, 0);
+ 
+        $response = curl_exec ($ch);
+        $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+        curl_close($ch);
+		
+        $result = json_decode($response, true);
+		
+						
+		return $result;
+		
+	}
+	
+	
+	/** 
+		매치 기록 조회
 		
 		@param String 	유저 puuid
 		@param Integer 	count 
 		@return Array
 	*/
 	public function getMatch($puuid , $count = 20){
-        $api_key = "RGAPI-fe885ae4-999f-4019-9af8-f35a775bb8a6";
+        $config = getConfig();
+		$api_key = "{$config['api_key']}";
+		
         $url = "https://asia.api.riotgames.com/tft/match/v1/matches/by-puuid/".$puuid."/ids?count=".$count."&api_key=".$api_key;
         $is_post = false;
         $ch = curl_init();
@@ -97,8 +138,10 @@ class FindId
         curl_close($ch);
 		
         $result = json_decode($response, true);
-						
-		return $result;
+		$data = $result;
+		return $data;
 		
 	}
+	
+	
 }

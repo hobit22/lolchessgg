@@ -47,6 +47,7 @@ class ListController extends \Controller\Front\Controller
 		$data = array_merge($data, $result);
 		
 		$data['category'] = $category; // 선택한 게시판 분류
+		//debug($data);
 		
 		App::render("Board/list", $data);
 	}

@@ -44,6 +44,7 @@ class ViewController extends \Controller\Front\Controller
 			];
 			
 			$params = array_merge($params, $conf);
+			
 			App::render("Board/comment", $params); 
 			$data['commentContents'] = ob_get_clean();
 		}

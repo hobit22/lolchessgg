@@ -17,7 +17,12 @@
 	<a href='<?=siteUrl("main/index")?>' class='logo'>
 			<!--<img src='<?=siteUrl("assets/front/images/bg_main.jpg")?>'>-->
 	</a>
-
+	<div class='search_box'>
+	<form method='get' action='<?=siteUrl("search/findId")?>' target='_self' autocomplete='off'>
+		<input type='text' name='userId'>
+		<input type='submit' value='검색'>
+	</form>
+	</div>
 <!-- 프론트 메인 메뉴 -->
 <!--
 <?php if ($categories) : ?>

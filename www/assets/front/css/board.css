@@ -5,6 +5,9 @@
 .file_box i { font-size: 15px; vertical-align: middle; }
 .file_box a:hover { text-decoration: underline; }
 
+.board_write { float: right; margin: 10px;}
+.btn_wrap:after { display:block; content: ''; clear:right;}
+
 /** Default 스킨 */
 /** 게시글 보기 - view.php */
 .board_skin_default.view { margin-bottom: 25px; }

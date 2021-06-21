@@ -1,0 +1,18 @@
+/** 매치 히스토리 */
+.match_history{ height: 115px; display: table; background-color: #fff; border-top : 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; margin : 8px auto; }
+.match_history .box1 { display:table-cell;  vertical-align:middle;}
+.summary { width: 100px;}
+
+
+.avator { width: 100px;}
+
+.traits { width: 300px;}
+.traits .trait { display: inline-block;}
+.traits img {width: 40px; height: 46px; }
+
+.unit { width: 400px;}
+.unit .character { display: inline-block;}
+.unit img {width: 40px; height: 40px; }
+
+.participants { width: 300px;}
+.participants  li { float: left; width: 50%;}
