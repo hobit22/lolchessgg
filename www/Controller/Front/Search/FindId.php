@@ -10,8 +10,7 @@ use App;
 class FindIdController extends \Controller\Front\Controller
 {
 	public function __construct()
-	{
-		
+	{	
 		$this->addCss(["match"])
 			  ->addScript(["match"]);
 	}
@@ -21,19 +20,40 @@ class FindIdController extends \Controller\Front\Controller
 		
 		$FindId = App::load(\Component\Search\FindId::class);
 		
-		$result = $FindId->get($in['userId']);
+		$userInfo = $FindId->get($in['userId']);
 		
-		App::render("Search/findId", $result);
+		if($result === false) {
+			msg("유저 아이디가 존재하지 않습니다.", -1);
+			return;
+		}
 		
-		$userId = $result['name'];
-		$match = $FindId->getMatch($result['puuid']);
+		App::render("Search/findId", $userInfo);
+		
+		$userId = $userInfo['name'];
+		$match = $FindId->getMatch($userInfo['puuid']);
+		if($match === false){
+			App::render("Search/noMatchData");
+			return;
+		}
+		$Rank = App::load(\Component\Search\RankSummary::class);
+		$rankInfo = $Rank->getRankInfo($userInfo['id']);
+		//debug($rankInfo);
+		if($result === false) {
+		}else{
+			App::render("Search/rank", $rankInfo);
+		}
 		
 		$Match = App::load(\Component\Search\MatchSummary::class);
 		
-		for($i =0; $i<sizeof($match); $i++){
+		for($i =0; $i<1; $i++){
 			$matchInfo = $Match->getMatchInfo($match[$i], $userId);
+			//debug($matchInfo);
+			if($matchInfo === false ) {
+				msg("데이터에 접근할 수 없습니다.", -1);
+			}
 			$pos = $matchInfo['pos'];
 			App::render("Search/match", $matchInfo);
 		}
+		
 	}
 }

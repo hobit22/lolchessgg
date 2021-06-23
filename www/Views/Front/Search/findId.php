@@ -1,12 +1,13 @@
-Views/Front/Search/findId.php
 <div class='user_summary layout_width'>
-	<div class='userNm'>
-	유저 명 <?=$name?>
+	<div class='userBox'>
+		<div class='profileIcon'>
+			<img src="<?=siteUrl('//ddragon.leagueoflegends.com/cdn/11.9.1/img/profileicon/'.$profileIconId.'.png')?>">
+			<div class='summonerLevel'>
+			<?=$summonerLevel?>
+			</div>
+		</div>
 	</div>
-	<div class='profileIcon'>
-	유저 아이콘 <?=$profileIconId?>
-	</div>
-	<div class='summonerLevel'>
-	유저 레벨 <?=$summonerLevel?>
+	<div class='userNm userBox'>
+	<?=$name?>
 	</div>
 </div>

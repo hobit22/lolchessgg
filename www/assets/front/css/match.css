@@ -1,18 +1,84 @@
+/** 유저 요약 정보 */
+.user_summary { width: 100%; height: 100%; background-image:url("../images/bg-summoner.jpg"); background-repeat: no-repeat; position: relative; margin-top: 10px;}
+.user_summary .profileIcon {width: 106px; height: 106px; position :relative; margin : 8px;}
+.user_summary .profileIcon img {wigth: 106px; height: 106px; }
+.user_summary .profileIcon .summonerLevel{position: absolute; bottom:0; right:0; background-color: #fff; padding: 5px;}
+.user_summary .userBox{ display: inline-block;}
+.user_summary .userNm {position:absolute; top: 20px; left: 140px; font-size: 18px; font-weight: 800; color: #fff;}
+
+/** 랭크 정보 */
+.rank_wrap { height: 135px; background-color: #fff; border-top : 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; margin : 8px auto; padding: 20px; vertical-align:middle;}
+.rank_wrap:after { clear:left; display:block; content: '';}
+.rank_wrap .rank_img{margin: 0 0 0 10px !important;}
+.rank_wrap .rank_img img { width:80px; }
+.rank_wrap .rank_box { float:left; margin: 30px 15px 0; font-size: 18px;}
+.rank_wrap .rank {}
+
+
 /** 매치 히스토리 */
-.match_history{ height: 115px; display: table; background-color: #fff; border-top : 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; margin : 8px auto; }
-.match_history .box1 { display:table-cell;  vertical-align:middle;}
-.summary { width: 100px;}
+.match_history{ height: 115px; background-color: #fff; border-top : 1px solid #e6e6e6; border-bottom: 1px solid #e6e6e6; margin : 8px auto; }
+.match_history .box1 { display:table-cell;  vertical-align:middle; height: 115px;}
+.match_history.nodata{ text-align:center; line-height:63px;}
 
+.match_history .summary .placement { font-size: 20px; margin-bottom: 5px;}
 
-.avator { width: 100px;}
+.summary {width: 140px; padding: 10px 5px 0 23px;}
+.avator { width: 50px;}
 
-.traits { width: 300px;}
-.traits .trait { display: inline-block;}
-.traits img {width: 40px; height: 46px; }
+/** 시너지 */
+.traits_wrap { width: 160px; }
+.traits_wrap .trait { display: inline-block; width: 24px; height: 24px; text-align:center; line-height: 24px; margin: 3px 0;}
+.traits_wrap .trait.chromatic { background-image: url("../images/traits/chromatic.svg"); background-repeat: no-repeat;}
+.traits_wrap .trait.gold { background-image: url("../images/traits/gold.svg"); background-repeat: no-repeat;}
+.traits_wrap .trait.silver { background-image: url("../images/traits/silver.svg"); background-repeat: no-repeat;}
+.traits_wrap .trait.bronze { background-image: url("../images/traits/bronze.svg"); background-repeat: no-repeat;}
+.traits_wrap img {width: 14px; height: 14px; background-position: center; vertical-align:middle;}
 
-.unit { width: 400px;}
-.unit .character { display: inline-block;}
-.unit img {width: 40px; height: 40px; }
+/** 유닛 */
+.unit_wrap { width: 430px; }
+.unit_wrap .unit { display: inline-block; width: 37px; height: 70px;}
+.unit_wrap .unit .star { display: inline-block; width: 100%; text-align:center;}
+.unit_wrap .unit .star i {font-size: 10px;}
+.unit_wrap .unit .star.tier_5 i {color: orange;}
+.unit_wrap .unit .star.tier_4 i {color: yellow;}
+.unit_wrap .unit .star.tier_3 i {color: blue;}
+.unit_wrap .unit .star.tier_2 i {color: red;}
+.unit_wrap .unit .star.tier_1 i {color: green;}
+.unit_wrap .unit .star.tier_0 i {color: gray;}
 
-.participants { width: 300px;}
-.participants  li { float: left; width: 50%;}
+.unit_wrap .character {border-radius: 5px; vertical-align:middle; overflow:hidden; height:40px;}
+.unit_wrap .character.rarity_5 {border: 2px solid orange;}
+.unit_wrap .character.rarity_4 {border: 2px solid  yellow;}
+.unit_wrap .character.rarity_3 {border: 2px solid  blue;}
+.unit_wrap .character.rarity_2 {border: 2px solid  red;}
+.unit_wrap .character.rarity_1 {border: 2px solid  green;}
+.unit_wrap .character.rarity_0 {border: 2px solid  gray;}
+.unit_wrap img {width: 37px; height: 37px; text-align:center; }
+
+/** 아이템 */
+.item_wrap {width: 37px; display: inline-block; text-align:center; letter-spacing:-4px;}
+.item_wrap .item { display: inline-block; }
+.item_wrap .item img { width: 12px; height: 12px; display: inline-block; overflow:hidden; border-radius:50%; }
+
+/** 참가자 */
+.participants { width: 300px; vertical-align:middle;padding :4px 0;}
+.participants:after { display: block; content:''; clear:left;}
+.participants  li { float: left; width: 50%; height: 20px; margin: 3px 0;}
+
+/** 매치 상세 보기 */
+.func { width: 20px; background-color: red; height: 100%; position: relative; cursor: pointer;}
+.func i { position: absolute; font-size: 20px; bottom: 0; }
+
+.matchDetail{ width: 100%; height: 100%;}
+.matchDetail table { width: 100%; height: 510px;}
+.matchDetail thead, .matchDetail tr{ width: 100%;}
+.matchDetail th {height: 32px; background-color: #e6e6e6; color: #646464; text-align:center; font-size: 12px; font-weight:400;}
+
+.matchDetail tbody tr{height: 52px; background-color: #fff;}
+.matchDetail .placement {width: 75px; text-align: center;}
+.matchDetail .summoner {width: 23%;}
+.matchDetail .round {width: 75px; text-align: center;}
+.matchDetail .time_eliminated {width: 75px; text-align: center;}
+.matchDetail .traits {width: 218px;}
+.matchDetail .units {width: calc(77% - 518px);}
+.matchDetail .gold_left {width: 75px; text-align: center;}

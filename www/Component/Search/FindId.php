@@ -39,10 +39,15 @@ class FindId
 	public function get($userId)
 	{
 		$userInfo = $this->byId($userId);
+		if($userInfo === false) return false;
 		$data = $userInfo;
+		/**
 		$puuid = $userInfo['puuid'];
 		$match = $this->getMatch($puuid);
+		debug($match);
 		$data ['matchData']= $match;
+		*/
+		
 		return $data;
 	
 	}
@@ -70,12 +75,13 @@ class FindId
  
         $response = curl_exec ($ch);
         $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-		
-        $result = json_decode($response, true);
-		
-						
-		return $result;
+		if($status_code == 200){
+			curl_close($ch);
+			
+			$result = json_decode($response, true);
+			return $result;
+		}
+		return false;
 		
 	}
 	/** 
@@ -102,12 +108,13 @@ class FindId
  
         $response = curl_exec ($ch);
         $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-		
-        $result = json_decode($response, true);
-		
-						
-		return $result;
+		if($status_code == 200){
+			curl_close($ch);
+			
+			$result = json_decode($response, true);
+			return $result;
+		}
+		return false;
 		
 	}
 	
@@ -135,11 +142,20 @@ class FindId
  
         $response = curl_exec ($ch);
         $status_code = curl_getinfo($ch, CURLINFO_HTTP_CODE);
-        curl_close($ch);
-		
-        $result = json_decode($response, true);
-		$data = $result;
-		return $data;
+		if($status_code == 200){
+			curl_close($ch);
+			
+			$result = json_decode($response, true);
+			foreach( $result as $a ){
+				if( substr($a,3,1) != 5) {
+					array_shift($result);
+				}
+			}
+			
+			if ( !empty($result) ) return $result;
+			return false;
+		}
+		return false;
 		
 	}
 	

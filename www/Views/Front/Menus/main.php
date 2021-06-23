@@ -9,7 +9,7 @@
 		<a href='<?=siteUrl("member/login")?>'>로그인</a>
 		<a href='<?=siteUrl("member/join")?>'>회원가입</a>
 	<?php endif; ?>
-	<a href='<?=siteUrl("order/cart")?>'>장바구니</a>
+	<!--<a href='<?=siteUrl("order/cart")?>'>장바구니</a>-->
 	</div>
 </div>
 <!-- 프론트 로고 영역 -->
@@ -17,11 +17,13 @@
 	<a href='<?=siteUrl("main/index")?>' class='logo'>
 			<!--<img src='<?=siteUrl("assets/front/images/bg_main.jpg")?>'>-->
 	</a>
-	<div class='search_box'>
-	<form method='get' action='<?=siteUrl("search/findId")?>' target='_self' autocomplete='off'>
-		<input type='text' name='userId'>
-		<input type='submit' value='검색'>
-	</form>
+	<div class='logo_search layout_width'>
+		<div class='search_box'>
+			<form method='get' action='<?=siteUrl("search/findId")?>' target='_self' autocomplete='off'>
+				<input type='text' name='userId'>
+				<input type='submit' value='검색'>
+			</form>
+		</div>
 	</div>
 <!-- 프론트 메인 메뉴 -->
 <!--
